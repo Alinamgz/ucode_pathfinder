@@ -22,9 +22,9 @@ CFLAGS := -std=c11 -Wall -Werror -Wextra -Wpedantic
 
 # ---------------- body ----------------
 
-all: $(LIB) $(NAME)
+all: libmx $(NAME)
 
-$(LIB): $(LIB_DIR )
+libmx: $(LIB_DIR)
 	@$(MAKE) -C $(LIB_DIR)
 
 $(NAME): $(OBJ_FILES)
