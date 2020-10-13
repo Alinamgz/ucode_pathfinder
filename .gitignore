@@ -11,4 +11,5 @@ main_check.c
 obj/**/**
 src_draft/**/*
 libmx.a
+pathfinder
 test.txt

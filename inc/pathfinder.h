@@ -26,4 +26,5 @@
 // ======= includes =======
 #include <libmx.h>
 
-
+// ======= funcs =======
+bool mx_validation(char **arr);
