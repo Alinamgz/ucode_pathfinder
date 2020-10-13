@@ -11,3 +11,4 @@ main_check.c
 obj/**/**
 src_draft/**/*
 libmx.a
+test.txt
