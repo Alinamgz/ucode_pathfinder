@@ -28,5 +28,6 @@
 
 // ======= funcs =======
 bool mx_validation(char **arr);
-bool mx_file_validation(char *file, char *file_name);
+// bool mx_file_validation(char *file, char *file_name);
+bool mx_file_validation(char *file_name);
 void mx_err_exit(char **file, char ***file_arr);
