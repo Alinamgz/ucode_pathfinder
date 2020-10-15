@@ -9,7 +9,7 @@ bool mx_file_validation(char *file_name) {
         err = 1;
     }
     else {
-        read(file, &buf, 32);
+        read(file, &buf, BUF_SIZE);
         err = buf ? err : 2;
     }
     close(file);
@@ -23,3 +23,14 @@ bool mx_file_validation(char *file_name) {
 	return TRUE;
 }
 
+bool mx_fstline_val(char *file, char *file_name) {
+    int i;
+
+    for (i = 0; file[i] != '\0' && file[i] != DELIM; i++) {
+        if (mx_isdigit(file[i]) == FALSE) {
+            mx_printerr(FIRST_LINE_ERR);
+            return FALSE;
+        }
+    }
+        return TRUE;
+}

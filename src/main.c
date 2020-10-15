@@ -15,7 +15,14 @@ int main(int arc, char *arv[]) {
     if (is_valid == FALSE) {
         mx_err_exit(&file, &file_arr);
     }
+
     file = mx_file_to_str(arv[1]);
+
+    is_valid = mx_fstline_val(file, arv[1]);
+
+    if (is_valid == FALSE) {
+        mx_err_exit(&file, &file_arr);
+    }
     file_arr = mx_strsplit(file, '\n');
 
  //   mx_strdel(&file);
