@@ -1,7 +1,7 @@
 #pragma once
 
 // ======= defines =======
-#define BUF_SIZE 32;
+#define BUF_SIZE 32
 #define DELIM '\n'
 // --- error msgs ---
 #define USAGE_ERR "usage: ./pathfinder [filename]\n"
@@ -30,6 +30,6 @@
 
 // ======= funcs =======
 bool mx_file_validation(char *file_name);
-bool mx_fstline_val(char *file, char *file_name);
+bool mx_fstline_val(char *file);
 
 void mx_err_exit(char **file, char ***file_arr);

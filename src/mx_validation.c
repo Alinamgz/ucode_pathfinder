@@ -20,17 +20,22 @@ bool mx_file_validation(char *file_name) {
         err == 1 ? mx_printerr(NONEXISTENT) : mx_printerr(EMPTY);
         return FALSE;
     }
-	return TRUE;
+    return TRUE;
 }
 
-bool mx_fstline_val(char *file, char *file_name) {
+bool mx_fstline_val(char *file) {
     int i;
+    bool rslt = FALSE;
 
-    for (i = 0; file[i] != '\0' && file[i] != DELIM; i++) {
-        if (mx_isdigit(file[i]) == FALSE) {
-            mx_printerr(FIRST_LINE_ERR);
-            return FALSE;
+    for (i = 0; file[i] != '\0' && file[i] != '\n'; i++) {
+        rslt = mx_isdigit(file[i]) ? TRUE : FALSE;
+        if (rslt == FALSE) {
+            break;
         }
     }
-        return TRUE;
+    if (rslt == FALSE) {
+        mx_printerr(FIRST_LINE_ERR);
+    }
+    return rslt;
+
 }
