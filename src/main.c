@@ -9,7 +9,6 @@ int main(int arc, char *arv[]) {
         mx_printerr(USAGE_ERR);
         exit(1);
     }
-
     is_valid = mx_file_validation(arv[1]);
 
     if (is_valid == FALSE) {

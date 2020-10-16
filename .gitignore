@@ -13,4 +13,4 @@ src_draft/**/*
 
 libmx.a
 pathfinder
-test.txt
+*.txt

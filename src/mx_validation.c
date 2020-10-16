@@ -3,14 +3,14 @@
 bool mx_file_validation(char *file_name) {
     int err = 0;
     int file = open(file_name, O_RDONLY);
-    char *buf = NULL;
+    char buf[1];
 
     if (file < 0) {
         err = 1;
     }
     else {
-        read(file, &buf, BUF_SIZE);
-        err = buf ? err : 2;
+        read(file, buf, 1);
+        err =  *buf ? err : 2;
     }
     close(file);
 
