@@ -37,5 +37,5 @@ bool mx_fstline_val(char *file) {
         mx_printerr(FIRST_LINE_ERR);
     }
     return rslt;
-
 }
+
