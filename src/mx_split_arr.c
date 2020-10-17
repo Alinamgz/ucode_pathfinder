@@ -47,7 +47,7 @@ char ***mx_split_arr(char **file_arr) {
                             case 0:
                                 rslt[i][j] = mx_strdup(buf_a[j]);
                                 break;
-                            case (row_sz - 1):
+                            case 3:
                                 rslt[i][j] = 0;
                                 break;
                             default:
