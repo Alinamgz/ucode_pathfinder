@@ -29,7 +29,7 @@ int main(int arc, char *arv[]) {
         for(int i = 0; fin_arr[i]; i++){
             mx_printstr("\n----------\n");
             mx_print_strarr(fin_arr[i], "\n");
-            mx_printstr("\n----------\n");
+            mx_printstr("----------\n");
         }
     }
     else {
