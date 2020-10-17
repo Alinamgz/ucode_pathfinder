@@ -29,6 +29,8 @@ char ***mx_split_arr(char **file_arr) {
             rslt[x][1] = buf_b[0];
             rslt[x][2] = buf_b[1];
             rslt[x][3] = 0;
+            mx_del_strarr(buf_a);
+            mx_del_strarr(buf_b);
         }
     }
     return rslt;
