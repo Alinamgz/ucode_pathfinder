@@ -25,12 +25,12 @@ char ***mx_split_arr(char **file_arr) {
             rslt[x] = (char **)malloc(sizeof(char *) * 4);
             buf_a = mx_strsplit(file_arr[x], del_a);
             buf_b = mx_strsplit(buf_a[1], del_b);
-            rslt[x][0] = buf_a[0];
-            rslt[x][1] = buf_b[0];
-            rslt[x][2] = buf_b[1];
+            rslt[x][0] = mx_strdup(buf_a[0]);
+            rslt[x][1] = mx_strdup(buf_b[0]);
+            rslt[x][2] = mx_strdup(buf_b[1]);
             rslt[x][3] = 0;
-            mx_del_strarr(buf_a);
-            mx_del_strarr(buf_b);
+            mx_del_strarr(&buf_a);
+            mx_del_strarr(&buf_b);
         }
     }
     return rslt;
