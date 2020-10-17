@@ -22,7 +22,7 @@ char ***mx_split_arr(char **file_arr) {
             rslt[x] = mx_strsplit(file_arr[x], del_a);
         }
         else {
-            rslt[x] = (char **)malloc(sizeof(Char *) * 4);
+            rslt[x] = (char **)malloc(sizeof(char *) * 4);
             buf_a = mx_strsplit(file_arr[x], del_a);
             buf_b = mx_strsplit(buf_a[1], del_b);
             rslt[x][0] = buf_a[0];
