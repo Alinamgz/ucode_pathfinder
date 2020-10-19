@@ -31,6 +31,7 @@
 // ======= funcs =======
 bool mx_file_validation(char *file_name);
 bool mx_fstline_val(char *file);
+bool mx_lines_val(char **arr);
 
 void mx_err_exit(char **file, char ***file_arr);
 

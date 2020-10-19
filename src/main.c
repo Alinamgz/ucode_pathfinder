@@ -3,7 +3,7 @@
 int main(int arc, char *arv[]) {
     char *file = NULL;
     char **file_arr = NULL;
-    char ***fin_arr = NULL;
+//    char ***fin_arr = NULL;
     bool is_valid = FALSE;
 
     if (arc != 2) {

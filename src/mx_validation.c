@@ -49,42 +49,46 @@ bool mx_lines_val(char **arr) {
         for (j = 0; line[j] && line[j] != '-'; j++) {
             rslt = mx_isalpha(line[j]) ? TRUE : FALSE;
             if (rslt == FALSE) {
-                mx_printterr(LINE_ERR);
+                mx_printerr(LINE_ERR);
                 mx_printerr(mx_itoa(1 + i));
                 mx_printerr(INVALID);
                 mx_err_exit(NULL, &arr);
                 exit(1);
             }
         }
-        rslt = line[j++] == '-' ? TRUE : FALSE;
+        rslt = line[j] == '-' ? TRUE : FALSE;
+        j++;
         if (rslt == FALSE) {
-                mx_printterr(LINE_ERR);
+                mx_printerr(LINE_ERR);
                 mx_printerr(mx_itoa(1 + i));
                 mx_printerr(INVALID);
                 mx_err_exit(NULL, &arr);
                 exit(1);
         }
-        for ( ; line[j] && line[j] != ',', j++]){
+        for ( ; line[j] && line[j] != ','; j++){
             rslt = mx_isalpha(line[j]);
             if (rslt == FALSE) {
-                mx_printterr(LINE_ERR);
+                mx_printerr(LINE_ERR);
                 mx_printerr(mx_itoa(1 + i));
                 mx_printerr(INVALID);
                 mx_err_exit(NULL, &arr);
                 exit(1);
             }
-        rslt = line[j++] == ',' ? TRUE : FALSE;
+        rslt = line[j] == ',' ? TRUE : FALSE;
+        j++;
         if (rslt == FALSE) {
-                mx_printterr(LINE_ERR);
+                mx_printerr(LINE_ERR);
                 mx_printerr(mx_itoa(1 + i));
+                mx_printerr(mx_itoa(j));
+                mx_printerr(line);
                 mx_printerr(INVALID);
                 mx_err_exit(NULL, &arr);
                 exit(1);
             }
-        for ( ; line[j] && line[j] != '\n', j++) {
+        for ( ; line[j] && line[j] != '\n'; j++) {
             rslt = mx_isdigit(line[j]);
             if(rslt == FALSE) {
-                mx_printterr(LINE_ERR);
+                mx_printerr(LINE_ERR);
                 mx_printerr(mx_itoa(1 + i));
                 mx_printerr(INVALID);
                 mx_err_exit(NULL, &arr);
