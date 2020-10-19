@@ -24,17 +24,23 @@ int main(int arc, char *arv[]) {
         mx_err_exit(&file, &file_arr);
     }
     file_arr = mx_strsplit(file, '\n');
-    fin_arr = mx_split_arr(file_arr);
-    if(fin_arr) {
-        for(int i = 0; fin_arr[i]; i++){
-            mx_printstr("\n----------\n");
-            mx_print_strarr(fin_arr[i], "\n");
-            mx_printstr("----------\n");
-        }
+    mx_strdel(&file);
+
+    is_valid = mx_lines_val(file_arr);
+    if (is_valid == FALSE) {
+        mx_err_exit(NULL, &file_arr);
     }
-    else {
-        mx_printstr("\nblinn");
-    }
+    // fin_arr = mx_split_arr(file_arr);
+    // if(fin_arr) {
+    //     for(int i = 0; fin_arr[i]; i++){
+    //         mx_printstr("\n----------\n");
+    //         mx_print_strarr(fin_arr[i], "\n");
+    //         mx_printstr("----------\n");
+    //     }
+    // }
+    // else {
+    //     mx_printstr("\nblinn");
+    // }
  //   mx_strdel(&file);
  mx_printchar(DELIM);
     system("leaks -q pathfinder");

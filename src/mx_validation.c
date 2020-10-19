@@ -39,3 +39,60 @@ bool mx_fstline_val(char *file) {
     return rslt;
 }
 
+bool mx_lines_val(char **arr) {
+    bool rslt = FALSE;
+    char *line = NULL;
+    int j;
+
+    for (int i = 1; arr[i]; i++) {
+        line = arr[i];
+        for (j = 0; line[j] && line[j] != '-'; j++) {
+            rslt = mx_isalpha(line[j]) ? TRUE : FALSE;
+            if (rslt == FALSE) {
+                mx_printterr(LINE_ERR);
+                mx_printerr(mx_itoa(1 + i));
+                mx_printerr(INVALID);
+                mx_err_exit(NULL, &arr);
+                exit(1);
+            }
+        }
+        rslt = line[j++] == '-' ? TRUE : FALSE;
+        if (rslt == FALSE) {
+                mx_printterr(LINE_ERR);
+                mx_printerr(mx_itoa(1 + i));
+                mx_printerr(INVALID);
+                mx_err_exit(NULL, &arr);
+                exit(1);
+        }
+        for ( ; line[j] && line[j] != ',', j++]){
+            rslt = mx_isalpha(line[j]);
+            if (rslt == FALSE) {
+                mx_printterr(LINE_ERR);
+                mx_printerr(mx_itoa(1 + i));
+                mx_printerr(INVALID);
+                mx_err_exit(NULL, &arr);
+                exit(1);
+            }
+        rslt = line[j++] == ',' ? TRUE : FALSE;
+        if (rslt == FALSE) {
+                mx_printterr(LINE_ERR);
+                mx_printerr(mx_itoa(1 + i));
+                mx_printerr(INVALID);
+                mx_err_exit(NULL, &arr);
+                exit(1);
+            }
+        for ( ; line[j] && line[j] != '\n', j++) {
+            rslt = mx_isdigit(line[j]);
+            if(rslt == FALSE) {
+                mx_printterr(LINE_ERR);
+                mx_printerr(mx_itoa(1 + i));
+                mx_printerr(INVALID);
+                mx_err_exit(NULL, &arr);
+                exit(1);
+            }
+        }
+        }
+    }
+
+    return rslt;
+}
