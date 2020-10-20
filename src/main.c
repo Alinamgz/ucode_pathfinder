@@ -18,18 +18,13 @@ int main(int arc, char *arv[]) {
 
     file = mx_file_to_str(arv[1]);
 
-    // is_valid = mx_fstline_val(file);
-
-    // if (is_valid == FALSE) {   
-    //     mx_err_exit(&file, &file_arr);
-    // }
     file_arr = mx_strsplit(file, '\n');
     mx_strdel(&file);
 
-    is_valid = mx_lines_val(file_arr);
-    if (is_valid == FALSE) {
-        mx_err_exit(NULL, &file_arr);
-    }
+     mx_lines_val(file_arr);
+    // if (is_valid == FALSE) {
+    //     mx_err_exit(NULL, &file_arr);
+    // }
     // fin_arr = mx_split_arr(file_arr);
     // if(fin_arr) {
     //     for(int i = 0; fin_arr[i]; i++){

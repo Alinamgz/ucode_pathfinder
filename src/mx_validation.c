@@ -22,33 +22,19 @@ bool mx_file_validation(char *file_name) {
     return TRUE;
 }
 
-bool mx_fstline_val(char *file) {
-    int i;
-    bool rslt = FALSE;
-
-    for (i = 0; file[i] != '\0' && file[i] != '\n'; i++) {
-        rslt = mx_isdigit(file[i]) ? TRUE : FALSE;
-        if (rslt == FALSE) {
-            break;
-        }
-    }
-    if (rslt == FALSE) {
-        mx_printerr(FIRST_LINE_ERR);
-    }
-    return rslt;
-}
-
 void mx_line_err(int line_num, char ***arr) {
-    mx_printerr(LINE_ERR);
-    mx_printerr(mx_itoa(line_num));
-    mx_printerr(INVALID);
-    mx_err_exit(NULL, arr);
-    system("leacs -q pathfinder");
-    exit(1);
+  char *line = mx_itoa(line_num);
+
+  mx_printerr(LINE_ERR);
+  mx_printerr(line);
+  mx_printerr(INVALID);
+  mx_err_exit(line, arr);
+  system("leacs -q pathfinder");
+  exit(1);
 }
 
-bool mx_lines_val(char **arr) {
-    bool rslt = FALSE;
+void mx_lines_val(char **arr) {
+    // bool rslt = FALSE;
     char *line = NULL;
     int j;
 
@@ -64,8 +50,8 @@ bool mx_lines_val(char **arr) {
             }
         }
         if (i > 0) {
-            rslt = line[j++] == '-' ? TRUE : FALSE;
-            if (rslt == FALSE) {
+            // rslt = line[j++] == '-' ? TRUE : FALSE;
+            if (line[j++] != '-') {
                 mx_line_err((1 + i), &arr);
             }
         }
@@ -75,8 +61,8 @@ bool mx_lines_val(char **arr) {
             }
         }
         if (i > 0){
-            rslt = line[j++] == ',' ? TRUE : FALSE;
-            if (rslt == FALSE) {
+            // rslt = line[j++] == ',' ? TRUE : FALSE;
+            if ( line[j++] != ',') {
                 mx_line_err((1 + i), &arr);
             }}
         for (; line[j] && line[j] != '\n'; j++) {
@@ -86,5 +72,5 @@ bool mx_lines_val(char **arr) {
         }
     }
 
-    return rslt;
+    // return rslt;
 }
