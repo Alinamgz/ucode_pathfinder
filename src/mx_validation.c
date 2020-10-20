@@ -63,19 +63,22 @@ bool mx_lines_val(char **arr) {
                 mx_line_err((1 + i), &arr);
             }
         }
-        rslt = i > 0 && line[j++] == '-' ? TRUE : FALSE;
-        if (rslt == FALSE) {
-            mx_line_err((1 + i), &arr);
+        if (i > 0) {
+            rslt = line[j++] == '-' ? TRUE : FALSE;
+            if (rslt == FALSE) {
+                mx_line_err((1 + i), &arr);
+            }
         }
         for (; i > 0 && line[j] && line[j] != ','; j++) {
             if (mx_isalpha(line[j]) == FALSE) {
                 mx_line_err((1 + i), &arr);
             }
         }
-        rslt = i > 0 && line[j++] == ',' ? TRUE : FALSE;
-        if (rslt == FALSE) {
-            mx_line_err((1 + i), &arr);
-        }
+        if (i > 0){
+            rslt = line[j++] == ',' ? TRUE : FALSE;
+            if (rslt == FALSE) {
+                mx_line_err((1 + i), &arr);
+            }}
         for (; line[j] && line[j] != '\n'; j++) {
             if (mx_isdigit(line[j]) == FALSE) {
                 mx_line_err((1 + i), &arr);
