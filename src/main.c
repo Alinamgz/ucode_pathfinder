@@ -4,27 +4,20 @@ int main(int arc, char *arv[]) {
     char *file = NULL;
     char **file_arr = NULL;
 //    char ***fin_arr = NULL;
-    bool is_valid = FALSE;
 
     if (arc != 2) {
         mx_printerr(USAGE_ERR);
         exit(1);
     }
-    is_valid = mx_file_validation(arv[1]);
-
-    if (is_valid == FALSE) {
-        mx_err_exit(&file, &file_arr);
-    }
-
+    mx_file_validation(arv[1]);
+    
     file = mx_file_to_str(arv[1]);
-
     file_arr = mx_strsplit(file, '\n');
+
     mx_strdel(&file);
 
-     mx_lines_val(file_arr);
-    // if (is_valid == FALSE) {
-    //     mx_err_exit(NULL, &file_arr);
-    // }
+    mx_lines_val(file_arr);
+
     // fin_arr = mx_split_arr(file_arr);
     // if(fin_arr) {
     //     for(int i = 0; fin_arr[i]; i++){
