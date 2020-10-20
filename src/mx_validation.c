@@ -52,27 +52,27 @@ bool mx_lines_val(char **arr) {
     char *line = NULL;
     int j;
 
-    for (int i = 1; arr[i]; i++) {
+    for (int i = 0; arr[i]; i++) {
         line = arr[i];
         mx_printstr("\n==============\n");
         mx_printstr(line);
         mx_printchar(DELIM);
 
-        for (j = 0; line[j] && line[j] != '-'; j++) {
+        for (j = 0; i > 0 && line[j] && line[j] != '-'; j++) {
             if (mx_isalpha(line[j]) == FALSE) {
                 mx_line_err((1 + i), &arr);
             }
         }
-        rslt = line[j++] == '-' ? TRUE : FALSE;
+        rslt = i > 0 && line[j++] == '-' ? TRUE : FALSE;
         if (rslt == FALSE) {
             mx_line_err((1 + i), &arr);
         }
-        for (; line[j] && line[j] != ','; j++) {
+        for (; i > 0 && line[j] && line[j] != ','; j++) {
             if (mx_isalpha(line[j]) == FALSE) {
                 mx_line_err((1 + i), &arr);
             }
         }
-        rslt = line[j++] == ',' ? TRUE : FALSE;
+        rslt = i > 0 && line[j++] == ',' ? TRUE : FALSE;
         if (rslt == FALSE) {
             mx_line_err((1 + i), &arr);
         }

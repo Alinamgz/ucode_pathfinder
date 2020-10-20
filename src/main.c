@@ -18,11 +18,11 @@ int main(int arc, char *arv[]) {
 
     file = mx_file_to_str(arv[1]);
 
-    is_valid = mx_fstline_val(file);
+    // is_valid = mx_fstline_val(file);
 
-    if (is_valid == FALSE) {   
-        mx_err_exit(&file, &file_arr);
-    }
+    // if (is_valid == FALSE) {   
+    //     mx_err_exit(&file, &file_arr);
+    // }
     file_arr = mx_strsplit(file, '\n');
     mx_strdel(&file);
 
