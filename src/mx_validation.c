@@ -1,10 +1,14 @@
 #include "pathfinder.h"
 
-void mx_file_validation(char *file_name) {
+void mx_file_validation(int arc, char *file_name) {
     int err = 0;
     int file = open(file_name, O_RDONLY);
     char buf[1];
 
+    if (arc != 2) {
+        mx_printerr(USAGE_ERR);
+        exit(1);
+    }
     if (file < 0) {
         err = 1;
     }

@@ -28,7 +28,7 @@
 #include <libmx.h>
 
 // ======= funcs =======
-void mx_file_validation(char *file_name);
+void mx_file_validation(int arc, char *file_name);
 void mx_lines_val(char **arr);
 
 void mx_err_exit(char **file, char ***file_arr);

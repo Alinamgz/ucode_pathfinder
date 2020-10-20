@@ -5,11 +5,11 @@ int main(int arc, char *arv[]) {
     char **file_arr = NULL;
 //    char ***fin_arr = NULL;
 
-    if (arc != 2) {
-        mx_printerr(USAGE_ERR);
-        exit(1);
-    }
-    mx_file_validation(arv[1]);
+    // if (arc != 2) {
+    //     mx_printerr(USAGE_ERR);
+    //     exit(1);
+    // }
+    mx_file_validation(arc, arv[1]);
     
     file = mx_file_to_str(arv[1]);
     file_arr = mx_strsplit(file, '\n');
