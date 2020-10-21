@@ -30,10 +30,11 @@
 // ======= structs =======
 
 // ======= funcs =======
-void mx_validation(int arc, char *file_name);
-void mx_validate_file(int arc, char *file_name);
+void mx_validation(int arc, char *file_path);
+void mx_validate_file(int arc, char *file_path);
 void mx_validate_lines(char **arr);
 void mx_validate_isl_amt(char **arr);
+void mx_line_error(int line_num, char ***arr);
 
 void mx_err_exit(char **file, char ***file_arr);
 
