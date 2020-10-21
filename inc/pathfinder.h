@@ -27,9 +27,13 @@
 // ======= includes =======
 #include <libmx.h>
 
+// ======= structs =======
+
 // ======= funcs =======
-void mx_file_validation(int arc, char *file_name);
-void mx_lines_val(char **arr);
+void mx_validation(int arc, char *file_name);
+void mx_validate_file(int arc, char *file_name);
+void mx_validate_lines(char **arr);
+void mx_validate_isl_amt(char **arr);
 
 void mx_err_exit(char **file, char ***file_arr);
 
