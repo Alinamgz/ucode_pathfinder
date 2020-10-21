@@ -10,7 +10,7 @@ LIB_DIR := ./$(LIB)
 LIB_INC_DIR := $(LIB_DIR)/$(INC_DIR)
 
 INC_FILES := $(wildcard $(INC_DIR)/*.h)
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+SRC_FILES := $(wildcard $(SRC_DIR)/*/*.c)
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(notdir $(SRC_FILES:%.c=%.o)))
 
 # -- commands --
