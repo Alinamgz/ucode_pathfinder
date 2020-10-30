@@ -20,6 +20,7 @@ void mx_validate_file(int arc, char *file_path) {
         mx_printerr(FILE_ERR);
         mx_printerr(file_path);
         err == 1 ? mx_printerr(NONEXISTENT) : mx_printerr(EMPTY);
+system("leaks -q pathfinder");
         exit(1);
     }
 }

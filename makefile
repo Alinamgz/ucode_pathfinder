@@ -25,7 +25,7 @@ CFLAGS := -std=c11 -Wall -Werror -Wextra -Wpedantic
 all: libmx $(NAME)
 
 libmx: $(LIB_DIR)
-	@$(MAKE) -C $(LIB_DIR)
+	@$(MAKE) -s -C $(LIB_DIR)
 
 $(NAME): $(OBJ_FILES)
 	@$(CC) $(CFLAGS) $(OBJ_FILES) -L $(LIB_DIR) -lmx -o $(NAME)

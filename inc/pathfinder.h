@@ -28,13 +28,20 @@
 #include <libmx.h>
 
 // ======= structs =======
+typedef struct s_validation {
+    int i;
+    int j;
+    char *file_str;
+    char **file_strarr;
+}              t_validation;
 
 // ======= funcs =======
-int mx_check_line_part(char **arr, int i, int j, char delim, bool (*f)(int));
 
-void mx_validation(int arc, char *file_path);
+int mx_check_line_part(t_validation *v, char delim, bool (*f)(int));
+
+void mx_validation(int arc, char *file_path, t_validation *v);
 void mx_validate_file(int arc, char *file_path);
-void mx_validate_lines(char **arr);
+void mx_validate_lines(t_validation *v);
 void mx_validate_isl_amt(char **arr);
 void mx_line_error(int line_num, char ***arr);
 void mx_err_exit(char **file, char ***file_arr);

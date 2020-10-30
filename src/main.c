@@ -1,6 +1,11 @@
 #include "pathfinder.h"
 
 int main(int arc, char *arv[]) {
+    t_validation *valid = (t_validation*)malloc(sizeof(t_validation));
+    valid->i = 0;
+    valid->j = 0;
+    valid->file_str = NULL;
+    valid->file_strarr = NULL;
 /*
     char *file = NULL;
     char **file_arr = NULL;
@@ -15,7 +20,7 @@ int main(int arc, char *arv[]) {
     mx_lines_val(file_arr);
   */
 
-  mx_validation(arc, arv[1]);
+  mx_validation(arc, arv[1], valid);
   mx_printchar(DELIM);
     system("leaks -q pathfinder");
     return 0;
