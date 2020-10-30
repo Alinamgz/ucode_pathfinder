@@ -4,7 +4,9 @@ void mx_validate_lines(t_validation *v) {
     int isl_in_line = 0;
     char *isl = NULL;
 
+
     for (v->i = 0; v->file_strarr[v->i]; v->i++) {
+
         if (v->i > 0) {
             v->j = 0;
             v->j = mx_check_line_part(v, '-', mx_isalpha);
@@ -19,4 +21,5 @@ void mx_validate_lines(t_validation *v) {
         }
         v->j = mx_check_line_part(v, 0, mx_isdigit);
     }
+    v->lines = v->i;
 }

@@ -26,8 +26,8 @@ int mx_check_line_part(t_validation *v, char delim, bool (*f)(int)) {
 // mx_printchar('\t');
 // mx_printint(v->i);
 // mx_printchar(DELIM);
-    for ( ; line[rslt] && line[rslt] != delim; rslt++) {
 
+    for ( ; line[rslt] && line[rslt] != delim; rslt++) {
         if (f(line[rslt])  == FALSE) {
             mx_line_error((1 + v->i), &(v->file_strarr));
         }
