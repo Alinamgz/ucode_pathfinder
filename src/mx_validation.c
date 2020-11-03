@@ -10,6 +10,7 @@ void mx_validation(int arc, char *file_path, t_validation *v){
     mx_validate_lines(v);
 
     mx_validate_isl_amt(v);
+//    mx_validate_bridges(v);
 //'mx_del_strarr(&file_arr);
 //    mx_validate_isl_amt(file_arr);
 }

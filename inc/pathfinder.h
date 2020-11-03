@@ -49,6 +49,7 @@ void mx_validation(int arc, char *file_path, t_validation *v);
 void mx_validate_file(int arc, char *file_path);
 void mx_validate_lines(t_validation *v);
 void mx_validate_isl_amt(t_validation *v);
+void mx_validate_bridges(t_validation *v);
 void mx_line_error(int line_num, char ***arr);
 void mx_err_exit(char **file, char ***file_arr);
 
