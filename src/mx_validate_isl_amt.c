@@ -3,7 +3,7 @@
 void mx_validate_isl_amt(t_validation *v) {
     v->amt = mx_atoi(v->file_strarr[0]);
     v->u_islands = (char**)malloc(sizeof(char*) * (1 + v->amt));
-    v->islands = (char**)malloc(sizeof(char*) * v->lines)
+    v->islands = (char**)malloc(sizeof(char*) * v->lines);
     bool unique = 1;
 
     for(v->j = 1 + v->amt; v->j > 0; v->j-- ) {
@@ -11,7 +11,7 @@ void mx_validate_isl_amt(t_validation *v) {
     }
     v->u_islands[v->j] = NULL;
 
-    for (int k = 0; k <= lines; k++) {
+    for (int k = 0; k <= v->lines; k++) {
         v->islands[k] = NULL;
     }
 
@@ -19,7 +19,7 @@ void mx_validate_isl_amt(t_validation *v) {
         v->buf_dist = mx_strsplit(v->file_strarr[v->i], ',');
         v->buf_isl = mx_strsplit(v->buf_dist[0], '-');
         v->dist_tot += mx_atoi(v->buf_dist[1]);
-        v->islands[i-1] = mx_strdup(v->buf_dist[0]);
+        v->islands[v->i-1] = mx_strdup(v->buf_dist[0]);
         for (int a = 0; v->buf_isl[a]; a++) {
             unique = 1;
             for(int b = 0; v->u_islands[b]; b++) {
