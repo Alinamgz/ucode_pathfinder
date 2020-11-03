@@ -35,5 +35,6 @@ void mx_validate_isl_amt(t_validation *v) {
 
     if (v->j != v->amt) {
         mx_printerr(ISLANDS_AMT_ERR);
+        exit(1);
     }
 }
