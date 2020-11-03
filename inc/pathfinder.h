@@ -36,6 +36,7 @@ typedef struct s_validation {
     long dist_tot;
     char *file_str;
     char **file_strarr;
+    char **u_islands;
     char **islands;
     char **buf_isl;
     char **buf_dist;
