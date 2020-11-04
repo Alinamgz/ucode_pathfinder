@@ -1,18 +1,12 @@
 #include "pathfinder.h"
 
-static void line_error(int line_num, char ***arr) {
-  char *line = mx_itoa(line_num);
+static void line_error(int line_num) {
+    char *line = mx_itoa(line_num);
 
-  mx_printerr(LINE_ERR);
-  mx_printerr(line);
-  mx_printerr(INVALID);
-mx_printchar(DELIM);
-system("leaks -q pathfinder");
-mx_printchar(DELIM);
-
-  mx_strdel(&line);
-  mx_del_strarr(arr);
-  exit(1)
+    mx_printerr(LINE_ERR);
+    mx_printerr(line);
+    mx_printerr(INVALID);
+    exit(1);
 }
 
 static void check_line_part(t_validation *v, char delim, bool (*f)(int)) {
@@ -21,11 +15,11 @@ static void check_line_part(t_validation *v, char delim, bool (*f)(int)) {
 
     for ( ; line[rslt] && line[rslt] != delim; rslt++) {
         if (f(line[rslt])  == FALSE) {
-            line_error((1 + v->i), &(v->file_strarr));
+            line_error((1 + v->i));
         }
     }
     if (delim && line[rslt] != delim) {
-        line_error((1 + v->i), &(v->file_strarr));
+        line_error((1 + v->i));
     }
     v->j = 1 + rslt;
 }
@@ -43,7 +37,7 @@ void mx_validate_lines(t_validation *v) {
             isl_in_line = mx_count_substr(v->file_strarr[v->i], isl);
             mx_strdel(&isl);
             if (isl_in_line != 1)
-                line_error((1 + v->i), &(v->file_strarr));
+                line_error((1 + v->i));
 
             check_line_part(v, ',', mx_isalpha);
         }

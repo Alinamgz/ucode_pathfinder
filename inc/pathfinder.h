@@ -33,7 +33,7 @@ typedef struct s_validation {
     int j;
     int lines;
     int amt;
-    unsigned long dist_tot;
+    long long dist_tot;
     char *file_str;
     char **file_strarr;
     char **u_islands;
