@@ -33,11 +33,12 @@ typedef struct s_validation {
     int j;
     int lines;
     int amt;
-    long long dist_tot;
+    unsigned total_dist;
     char *file_str;
     char **file_strarr;
-    char **u_islands;
+    char **unique_islands;
     char **islands;
+    char **distances;
     char **buf_a;
     char **buf_b;
 }              t_validation;
