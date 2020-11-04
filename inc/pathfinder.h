@@ -38,20 +38,21 @@ typedef struct s_validation {
     char **file_strarr;
     char **u_islands;
     char **islands;
-    char **buf_isl;
-    char **buf_dist;
+    char **buf_a;
+    char **buf_b;
 }              t_validation;
 
 // ======= funcs =======
 
-int mx_check_line_part(t_validation *v, char delim, bool (*f)(int));
+// void mx_check_line_part(t_validation *v, char delim, bool (*f)(int));
 
 void mx_validation(int arc, char *file_path, t_validation *v);
 void mx_validate_file(int arc, char *file_path);
 void mx_validate_lines(t_validation *v);
-void mx_validate_isl_amt(t_validation *v);
+void mx_validate_islands(t_validation *v);
 void mx_validate_bridges(t_validation *v);
-void mx_line_error(int line_num, char ***arr);
-void mx_err_exit(char **file, char ***file_arr);
+// void mx_line_error(int line_num, char ***arr);
+// void mx_err_exit(char **file, char ***file_arr);
+void mx_init_validation(t_validation *v);
 
 char ***mx_split_arr(char **file_arr);
