@@ -3,34 +3,36 @@
 static void prepare_validation(t_validation *v) {
     v->unique_islands = (char **)malloc(sizeof(char *) * (1 + v->amt));
     v->islands = (char **)malloc(sizeof(char *) * v->lines);
+    // TODO: check if you really need char **distances
     v->distances = (char **)malloc(sizeof(char *) * v->lines);
 
     for (v->j = 1 + v->amt; v->j > 0; v->j--) {
-        v->u_islands[v->j] = NULL;
+        v->unique_islands[v->j] = NULL;
     }
-    v->u_islands[v->j] = NULL;
+    v->unique_islands[v->j] = NULL;
 
     for (int k = 0; k <= v->lines; k++) {
         v->islands[k] = NULL;
+        v->distances[k] = NULL;
     }
 }
 
-static void check_islands(t_validation v) {
-    bool unique = 1;
+static void check_islands_uniqueness(t_validation *v) {
+    bool is_unique = 1;
 
     for (int a = 0; v->buf_b[a]; a++) {
-    unique = 1;
-    for (int b = 0; v->unique_islands[b]; b++) {
-        if (!mx_strcmp(v->unique_islands[b], v->buf_b[a])) {
-            unique = 0;
-            break;
+        is_unique = 1;
+        for (int b = 0; v->unique_islands[b]; b++) {
+            if (!mx_strcmp(v->unique_islands[b], v->buf_b[a])) {
+                is_unique = 0;
+                break;
+            }
         }
-    }
-    if (unique) {
-        if (v->j < v->amt) {
-            v->u_islands[v->j] = mx_strdup(v->buf_b[a]);
-        }
-        v->j++;
+        if (is_unique) {
+            if (v->j < v->amt) {
+                v->unique_islands[v->j] = mx_strdup(v->buf_b[a]);
+            }
+            v->j++;
         }
     }
 }
@@ -46,7 +48,7 @@ void mx_validate_islands(t_validation *v) {
         v->distances[v->i - 1] = mx_strdup(v->buf_a[1]);
         v->total_dist += mx_atoi(v->buf_a[1]);
 
-        check_islands(v);
+        check_islands_uniqueness(v);
 
         mx_del_strarr(&v->buf_a);
         mx_del_strarr(&v->buf_b);

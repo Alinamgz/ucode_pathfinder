@@ -13,8 +13,8 @@ static void check_line_part(t_validation *v, char delim, bool (*f)(int)) {
     char *line = v->file_strarr[v->i];
     int rslt = v->j;
 
-    for ( ; line[rslt] && line[rslt] != delim; rslt++) {
-        if (f(line[rslt])  == FALSE) {
+    for (; line[rslt] && line[rslt] != delim; rslt++) {
+        if (f(line[rslt]) == FALSE) {
             line_error((1 + v->i));
         }
     }
@@ -36,9 +36,9 @@ void mx_validate_lines(t_validation *v) {
             isl = mx_strndup(v->file_strarr[v->i], (v->j - 1));
             isl_in_line = mx_count_substr(v->file_strarr[v->i], isl);
             mx_strdel(&isl);
-            if (isl_in_line != 1)
+            if (isl_in_line != 1) {
                 line_error((1 + v->i));
-
+            }
             check_line_part(v, ',', mx_isalpha);
         }
         check_line_part(v, 0, mx_isdigit);

@@ -1,7 +1,6 @@
 #pragma once
 
 // ======= defines =======
-#define BUF_SIZE 32
 #define DELIM '\n'
 // --- error msgs ---
 #define USAGE_ERR "usage: ./pathfinder [filename]\n"
@@ -45,15 +44,9 @@ typedef struct s_validation {
 
 // ======= funcs =======
 
-// void mx_check_line_part(t_validation *v, char delim, bool (*f)(int));
-
+void mx_init_validation(t_validation *v);
 void mx_validation(int arc, char *file_path, t_validation *v);
 void mx_validate_file(int arc, char *file_path);
 void mx_validate_lines(t_validation *v);
 void mx_validate_islands(t_validation *v);
 void mx_validate_bridges(t_validation *v);
-// void mx_line_error(int line_num, char ***arr);
-// void mx_err_exit(char **file, char ***file_arr);
-void mx_init_validation(t_validation *v);
-
-char ***mx_split_arr(char **file_arr);
