@@ -42,6 +42,10 @@ typedef struct s_validation {
     char **buf_b;
 }              t_validation;
 
+typedef struct s_matrix {
+    int **adj_m;
+}               t_matrix;
+
 // ======= funcs =======
 
 void mx_init_validation(t_validation *v);
@@ -50,3 +54,6 @@ void mx_validate_file(int arc, char *file_path);
 void mx_validate_lines(t_validation *v);
 void mx_validate_islands(t_validation *v);
 void mx_validate_bridges(t_validation *v);
+
+void mx_adjacency_matrix(t_validation v, t_matrix m);
+// void mx_fw_algorithm(void)

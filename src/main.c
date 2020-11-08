@@ -5,7 +5,10 @@ int main(int arc, char *arv[]) {
 
     mx_init_validation(validation);
     mx_validation(arc, arv[1], validation);
-    // TODO: cdelete printchar && system leaks
+    
+    t_matrix *matrix = (t_matrix *)malloc(sizeof(t_matrix));
+    void mx_adjacency_matrix(t_validation v, t_matrix m);
+    // TODO: delete printchar && system leaks
     mx_printchar(DELIM);
     system("leaks -q pathfinder");
     return 0;
