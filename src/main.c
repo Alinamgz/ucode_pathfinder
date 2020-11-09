@@ -18,6 +18,17 @@ for (int i = 0; i < validation->amt; i++) {
 }
 //==============================
 
+    mx_fw_algorithm(matrix);
+//==============================
+mx_printstr("\n===== AFTER =====\n");
+for (int i = 0; i < validation->amt; i++) {
+        mx_printchar(DELIM);
+    for(int j = 0; j < validation->amt; j++ ){
+        mx_printchar('\t');
+        mx_printint(matrix->adj_m[i][j]);
+    }
+}
+//==============================
     // TODO: delete printchar && system leaks
     mx_printchar(DELIM);
     mx_printchar(DELIM);

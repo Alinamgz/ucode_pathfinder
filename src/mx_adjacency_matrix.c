@@ -12,9 +12,10 @@ static int get_island_index(char **arr, char *str) {
 }
 
 void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
-    m->adj_m = (int**)malloc(sizeof(int *) * v->amt);
+    m->adj_m = (unsigned**)malloc(sizeof(unsigned *) * v->amt);
+    m->amt = v->amt;
     for(m->from = 0; m->from < v->amt; m->from++) {
-        m->adj_m[m->from] = (int*)malloc(sizeof(int) * v->amt) ;
+        m->adj_m[m->from] = (unsigned*)malloc(sizeof(unsigned) * v->amt) ;
         for (m->to = 0; m->to < v->amt; m->to++) {
             m->adj_m[m->from][m->to] = (m->from == m->to) ? 0 : INT_MAX;
         }
