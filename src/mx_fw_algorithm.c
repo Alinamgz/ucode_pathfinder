@@ -9,7 +9,7 @@ void mx_fw_algorithm(t_matrix *m) {
 			for (int j = 0; j < m->amt; j++) {
 				if (m->adj_m[i][j] > m->adj_m[i][k] + m->adj_m[k][j]) {
 					m->adj_m[i][j] = m->adj_m[i][k] + m->adj_m[k][j];
-                    m->next_m[i][j] = k;
+                    m->next_m[i][j] = m->next_m[i][k];
 				}
 			}
 		}

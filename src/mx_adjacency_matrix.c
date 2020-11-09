@@ -31,7 +31,7 @@ void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
         m->to = get_island_index(v->unique_islands, v->buf_a[1]);
         mx_del_strarr(&v->buf_a);
 
-        m->adj_m[m->from][m->to] = mx_atoi(v->distances[i]);
-        m->adj_m[m->to][m->from] = mx_atoi(v->distances[i]);
+        m->adj_m[m->from][m->to] = (unsigned)mx_atoi(v->distances[i]);
+        m->adj_m[m->to][m->from] = (unsigned)mx_atoi(v->distances[i]);
     }
 }
