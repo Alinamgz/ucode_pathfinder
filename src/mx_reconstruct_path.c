@@ -1,5 +1,33 @@
 #include "pathfinder.h"
 
+static void print_path (int start, int end, t_validation *v, t_matrix *m) {
+
+    mx_printstr(START_BOUNDARY);
+    mx_printstr(PATH);
+    mx_printstr(v->unique_islands[start]);
+    mx_printstr(ARROW);
+    mx_printstr(v->unique_islands[end]);
+    mx_printstr(ROUTE);
+    for (int j = 0; m->path[j] != -1; j++){
+        mx_printstr(v->unique_islands[m->path[j]]);
+        if (m->path[1+j] >= 0) {
+            mx_printstr(ARROW); 
+        }
+    }
+    mx_printstr(DISTANCE);
+//TODO: fix output
+    for (int d = 0; m->path[d] != -1; d++) {
+        m->from = m->path[1 + d] != -1 ? m->path[d] : start;
+        m->to = m->path[1 + d] != -1 ? m->path[1 + d] : end;
+
+        if (d > 0) {
+            m->from == m->path[0] ? mx_printstr(EQUALS) : mx_printstr(PLUS);
+        }
+        mx_printint(m->adj_m[m->from][m->to]);
+    }
+    mx_printstr(END_BOUNDARY);
+}
+
 void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m) {
     int i = 0;
     int at = 0;
@@ -23,31 +51,6 @@ void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m) {
     mx_printchar(DELIM);
     mx_printchar(DELIM);
 
-    mx_printstr(BOUNDARY);
-    mx_printstr(PATH);
-    mx_printstr(v->unique_islands[start]);
-    mx_printstr(ARROW);
-    mx_printstr(v->unique_islands[end]);
-    mx_printchar(NEWLINE);
-    mx_printstr(ROUTE);
-    for (int j = 0; m->path[j] >= 0; j++){
-        mx_printstr(v->unique_islands[m->path[j]]);
-        if (m->path[1+j] >= 0) {
-            mx_printstr(ARROW); 
-        }
-    }
-    mx_printchar(NEWLINE);
-    mx_printstr(DISTANCE);
+    print_path(start, end, v, m);
 
-    for (int d = 0; m->path[d] >= 0; d++) {
-        m->from = m->path[1 + d] >= 0 ? m->path[d] : 0;
-        m->to = m->path[1 + d] >= 0 ? m->path[1 + d] : m->path[d];
-        if (d > 0) {
-            m->path[2+d] >= 0 ? mx_printstr(PLUS) : mx_printstr(EQUALS);
-        }
-        mx_printint(m->adj_m[m->from][m->to]);
-
-    }
-    mx_printchar(NEWLINE);
-    mx_printstr(BOUNDARY);
 }

@@ -14,13 +14,14 @@
 #define BRIDGES_LNG_ERR "error: sum of bridges lengths is too big\n"
 
 // --- result output ---
-#define BOUNDARY "========================================\n"
-#define PATH "Path: "
-#define ROUTE "Route: "
-#define DISTANCE "Distance: "
+#define START_BOUNDARY "========================================"
+#define PATH "\nPath: "
+#define ROUTE "\nRoute: "
+#define DISTANCE "\nDistance: "
 #define ARROW " -> "
 #define PLUS " + "
 #define EQUALS " = "
+#define END_BOUNDARY "\n========================================\n"
 #define NEWLINE '\n'
 
 // ======= includes =======
