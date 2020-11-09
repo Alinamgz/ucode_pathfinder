@@ -44,9 +44,11 @@ typedef struct s_validation {
 
 typedef struct s_matrix {
     unsigned **adj_m;
+    int **next_m;
     int amt;
     int from;
     int to;
+    int via;
 }               t_matrix;
 
 // ======= funcs =======
