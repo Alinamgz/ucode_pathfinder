@@ -25,7 +25,7 @@ int main(int arc, char *arv[]) {
         mx_printchar('\t');
         mx_printstr(validation->unique_islands[i]);
     }
-        mx_printchar(DELIM);
+    mx_printchar(DELIM);
     for (int i = 0; i < matrix->amt; i++) {
         mx_printstr("\n  ");
         mx_printstr(validation->unique_islands[i]);
@@ -45,10 +45,18 @@ int main(int arc, char *arv[]) {
         }
 
     }
+    mx_printchar(DELIM);
     //==============================
     // TODO: delete printchar && system leaks
 
-    mx_reconstruct_path(0, 2, validation, matrix);
+    // reconstructed path output
+    for (int i = 0; validation->unique_islands[i]; i++) {
+        for (int j = 1 + i; validation->unique_islands[j]; j++) {
+            if (i != j) {
+                mx_reconstruct_path(i, j, validation, matrix);
+            }
+        }
+    }
     mx_printchar(DELIM);
     mx_printchar(DELIM);
     system("leaks -q pathfinder");

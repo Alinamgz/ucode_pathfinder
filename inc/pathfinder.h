@@ -65,3 +65,5 @@ void mx_validate_bridges(t_validation *v);
 void mx_adjacency_matrix(t_validation *v, t_matrix *m);
 void mx_fw_algorithm(t_matrix *m);
 void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m);
+void mx_print_path(int start, int end, t_validation *v, t_matrix *m);
+
