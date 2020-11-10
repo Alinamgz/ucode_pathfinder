@@ -5,7 +5,6 @@ void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m) {
     int at = 0;
 
     if (m->adj_m[start][end] != INT_MAX) {
-
         m->path = (int*)malloc(sizeof(int) * (m->amt + 1));
 
         for (i = 0; i <= m->amt + 1; i++) {
