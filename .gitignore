@@ -10,6 +10,7 @@ main_check.c
 
 obj/**/**
 src_draft/**/*
+check_path/**/*
 
 libmx.a
 pathfinder
