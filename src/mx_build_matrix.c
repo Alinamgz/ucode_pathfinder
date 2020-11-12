@@ -11,6 +11,24 @@ static int get_island_index(char **arr, char *str) {
     return -1;
 }
 
+static void fill_matrix(t_validation *v, t_matrix *m) {
+    int from = -1;
+    int to = -1;
+
+    for (int i = 0; v->islands[i]; i++) {
+        v->buf_a = mx_strsplit(v->islands[i], '-');
+        from = get_island_index(v->unique_islands, v->buf_a[0]);
+        to = get_island_index(v->unique_islands, v->buf_a[1]);
+        mx_del_strarr(&v->buf_a);
+
+        m->adj_m[from][to] = (unsigned)mx_atoi(v->distances[i]);
+        m->adj_m[to][from] = (unsigned)mx_atoi(v->distances[i]);
+        
+        m->is_direct[from][to] = TRUE;
+        m->is_direct[to][from] = TRUE;
+    }
+}
+
 void mx_build_matrix(t_validation *v, t_matrix *m) {
     int from;
     int to;
@@ -28,17 +46,5 @@ void mx_build_matrix(t_validation *v, t_matrix *m) {
         }
     }
 
-    for (int i = 0; v->islands[i]; i++) {
-        v->buf_a = mx_strsplit(v->islands[i], '-');
-        from = get_island_index(v->unique_islands, v->buf_a[0]);
-        to = get_island_index(v->unique_islands, v->buf_a[1]);
-        mx_del_strarr(&v->buf_a);
-
-        m->adj_m[from][to] = (unsigned)mx_atoi(v->distances[i]);
-        m->adj_m[to][from] = (unsigned)mx_atoi(v->distances[i]);
-        
-        m->is_direct[from][to] = TRUE;
-        m->is_direct[to][from] = TRUE;
-    }
-
+    fill_matrix(v, m);
 }

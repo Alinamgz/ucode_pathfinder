@@ -17,8 +17,7 @@ int main(int arc, char *arv[]) {
     mx_reconstruct_path(validation, matrix);
 
     // TODO: delete printchar && system leaks
-    mx_printchar(DELIM);
-    mx_printchar(DELIM);
+    mx_printstr("\n\n");
     system("leaks -q pathfinder");
     return 0;
 }

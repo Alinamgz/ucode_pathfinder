@@ -1,7 +1,6 @@
 #pragma once
 
 // ======= defines =======
-#define DELIM '\n'
 // --- error msgs ---
 #define USAGE_ERR "usage: ./pathfinder [filename]\n"
 #define FILE_ERR "error: file "
@@ -22,7 +21,6 @@
 #define PLUS " + "
 #define EQUALS " = "
 #define END_BOUNDARY "\n========================================\n"
-#define NEWLINE '\n'
 
 // ======= includes =======
 #include <libmx.h>
