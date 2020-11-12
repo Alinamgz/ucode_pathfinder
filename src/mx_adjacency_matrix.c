@@ -10,28 +10,64 @@ static int get_island_index(char **arr, char *str) {
 
     return -1;
 }
+/*
 
 void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
-    m->amt = v->amt;
-    m->adj_m = (unsigned**)malloc(sizeof(unsigned *) * m->amt);
-    m->next_m = (int**)malloc(sizeof(int*) * m->amt);
+    unsigned from;
+    unsigned to;
+    m->adj_m = (unsigned**)malloc(sizeof(unsigned *) * v->amt);
+    m->next_m = (int**)malloc(sizeof(int*) * v->amt);
 
-    for(m->from = 0; m->from < v->amt; m->from++) {
-        m->adj_m[m->from] = (unsigned*)malloc(sizeof(unsigned) * m->amt);
-        m->next_m[m->from] = (int*)malloc(sizeof(int) * m->amt);
-        for (m->to = 0; m->to < v->amt; m->to++) {
-            m->adj_m[m->from][m->to] = (m->from == m->to) ? 0 : INT_MAX;
-            m->next_m[m->from][m->to] = m->to;
+    for(from = 0; from < v->amt; from++) {
+        m->adj_m[from] = (unsigned*)malloc(sizeof(unsigned) * v->amt);
+        m->next_m[from] = (int*)malloc(sizeof(int) * v->amt);
+        for (to = 0; to < v->amt; to++) {
+            m->adj_m[from][to] = (from == to) ? 0 : INT_MAX;
+            m->next_m[from][to] = to;
         }
     }
 
     for(int i = 0; v->islands[i]; i++) {
+
         v->buf_a = mx_strsplit(v->islands[i], '-');
-        m->from = get_island_index(v->unique_islands, v->buf_a[0]);
-        m->to = get_island_index(v->unique_islands, v->buf_a[1]);
+        from = get_island_index(v->unique_islands, v->buf_a[0]);
+        to = get_island_index(v->unique_islands, v->buf_a[1]);
         mx_del_strarr(&v->buf_a);
 
-        m->adj_m[m->from][m->to] = (unsigned)mx_atoi(v->distances[i]);
-        m->adj_m[m->to][m->from] = (unsigned)mx_atoi(v->distances[i]);
+        m->adj_m[from][to] = (unsigned)mx_atoi(v->distances[i]);
+        m->adj_m[to][from] = (unsigned)mx_atoi(v->distances[i]);
     }
+}
+*/
+
+void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
+    int from;
+    int to;
+
+    m->adj_m = (unsigned**)malloc(sizeof(unsigned *) * v->amt);
+    m->is_direct = (bool**)malloc(sizeof(bool *) * v->amt);
+
+    for (from = 0; from < v->amt; from++) {
+        m->adj_m[from] = (unsigned*)malloc(sizeof(unsigned *) * v->amt);
+        m->is_direct[from] = (bool*)malloc(sizeof(unsigned *) * v->amt);
+        
+        for(to = 0; to < v->amt; to++) {
+            m->adj_m[from][to] = (from == to) ? 0 : INT_MAX;
+            m->is_direct[from][to] = (from == to) ? TRUE : FALSE;
+        }
+    }
+
+    for (int i = 0; v->islands[i]; i++) {
+        v->buf_a = mx_strsplit(v->islands[i], '-');
+        from = get_island_index(v->unique_islands, v->buf_a[0]);
+        to = get_island_index(v->unique_islands, v->buf_a[1]);
+        mx_del_strarr(&v->buf_a);
+
+        m->adj_m[from][to] = (unsigned)mx_atoi(v->distances[i]);
+        m->adj_m[to][from] = (unsigned)mx_atoi(v->distances[i]);
+        
+        m->is_direct[from][to] = TRUE;
+        m->is_direct[to][from] = TRUE;
+    }
+
 }

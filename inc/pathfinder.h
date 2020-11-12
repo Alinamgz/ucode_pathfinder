@@ -46,11 +46,8 @@ typedef struct s_validation {
 typedef struct s_matrix {
     unsigned **adj_m;
     int **next_m;
+    bool **is_direct;
     int *path;
-    int amt;
-    int from;
-    int to;
-    int via;
 }               t_matrix;
 
 // ======= funcs =======
@@ -63,7 +60,9 @@ void mx_validate_islands(t_validation *v);
 void mx_validate_bridges(t_validation *v);
 
 void mx_adjacency_matrix(t_validation *v, t_matrix *m);
-void mx_fw_algorithm(t_matrix *m);
-void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m);
-void mx_print_path(int start, int end, t_validation *v, t_matrix *m);
+void mx_fw_algorithm(int amt, t_matrix *m);
+//void mx_reconstruct_path(int start, int end, t_validation *v, t_matrix *m);
+void mx_reconstruct_path(t_validation *v, t_matrix *m);
+//void mx_print_path(int start, int end, t_validation *v, t_matrix *m);
+void mx_print_path(int to, t_validation *v, t_matrix *m);
 
