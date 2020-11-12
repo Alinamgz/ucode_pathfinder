@@ -9,7 +9,7 @@ int main(int arc, char *arv[]) {
     t_matrix *matrix = (t_matrix *)malloc(sizeof(t_matrix));
     matrix->adj_m = NULL;
     matrix->is_direct = NULL;
-    matrix->path = NULL;
+    matrix->route = NULL;
 
     mx_build_matrix(validation, matrix);
 

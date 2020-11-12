@@ -3,7 +3,6 @@
 static void prepare_validation(t_validation *v) {
     v->unique_islands = (char **)malloc(sizeof(char *) * (1 + v->amt));
     v->islands = (char **)malloc(sizeof(char *) * v->lines);
-    // TODO: check if you really need char **distances
     v->distances = (char **)malloc(sizeof(char *) * v->lines);
 
     for (v->j = 1 + v->amt; v->j > 0; v->j--) {

@@ -10,7 +10,7 @@ static void get_path(int from, int to, int at, t_validation *v, t_matrix *m) {
     for (int i = 0; i < v->amt; i++) {
         if (m->is_direct[from][i] && from != i) {
             if (m->adj_m[from][to] == m->adj_m[from][i] + m->adj_m[i][to]) {
-                m->path[at - 1] = i;
+                m->route[at - 1] = i;
                 get_path(i, to, at, v, m);
             }
         }
@@ -18,19 +18,19 @@ static void get_path(int from, int to, int at, t_validation *v, t_matrix *m) {
 }
 
 void mx_reconstruct_path(t_validation *v, t_matrix *m) {
-    m->path = (int*)malloc(sizeof(int) * (v->amt + 1));
+    m->route = (int*)malloc(sizeof(int) * (v->amt + 1));
 
     for (int i = 0; i <= v->amt; i++) {
-        m->path[i] = -1;
+        m->route[i] = -1;
     }
 
     for (int from = 0; from < v->amt; from++) {
-        m->path[0] = from;
+        m->route[0] = from;
 
         for (int to = 1 + from; to < v->amt; to++) {
             get_path(from, to, 1, v, m);
         }
     }
 
-    free(m->path);
+    free(m->route);
 }
