@@ -28,9 +28,10 @@ free(m->path);
 
 static void get_path(int from, int to, int at, t_validation *v, t_matrix *m) {
     if (from == to) {
-    mx_printchar(DELIM);
-    mx_printint(at);
-    mx_printchar(DELIM);
+    //TODO: del next 3 lines
+mx_printchar(DELIM);
+mx_printint(at);
+mx_printchar(DELIM);
         mx_print_path(at-1, v, m);
         return;
     }
