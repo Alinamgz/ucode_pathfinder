@@ -10,37 +10,8 @@ static int get_island_index(char **arr, char *str) {
 
     return -1;
 }
-/*
 
-void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
-    unsigned from;
-    unsigned to;
-    m->adj_m = (unsigned**)malloc(sizeof(unsigned *) * v->amt);
-    m->next_m = (int**)malloc(sizeof(int*) * v->amt);
-
-    for(from = 0; from < v->amt; from++) {
-        m->adj_m[from] = (unsigned*)malloc(sizeof(unsigned) * v->amt);
-        m->next_m[from] = (int*)malloc(sizeof(int) * v->amt);
-        for (to = 0; to < v->amt; to++) {
-            m->adj_m[from][to] = (from == to) ? 0 : INT_MAX;
-            m->next_m[from][to] = to;
-        }
-    }
-
-    for(int i = 0; v->islands[i]; i++) {
-
-        v->buf_a = mx_strsplit(v->islands[i], '-');
-        from = get_island_index(v->unique_islands, v->buf_a[0]);
-        to = get_island_index(v->unique_islands, v->buf_a[1]);
-        mx_del_strarr(&v->buf_a);
-
-        m->adj_m[from][to] = (unsigned)mx_atoi(v->distances[i]);
-        m->adj_m[to][from] = (unsigned)mx_atoi(v->distances[i]);
-    }
-}
-*/
-
-void mx_adjacency_matrix(t_validation *v, t_matrix *m) {
+void mx_build_matrix(t_validation *v, t_matrix *m) {
     int from;
     int to;
 
