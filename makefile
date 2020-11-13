@@ -12,6 +12,7 @@ LIB_INC_DIR := $(LIB_DIR)/$(INC_DIR)
 INC_FILES := $(wildcard $(INC_DIR)/*.h)
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(notdir $(SRC_FILES:%.c=%.o)))
+LIB_FILE := $(addprefix $(LIB_DIR)/, $(addsuffix .a, $(LIB)))
 
 # -- commands --
 RM := rm -rdf
@@ -22,13 +23,13 @@ CFLAGS := -std=c11 -Wall -Werror -Wextra -Wpedantic
 
 # ---------------- body ----------------
 
-all: libmx $(NAME)
+all: $(LIB_FILE) $(NAME)
 
-libmx: $(LIB_DIR)
+$(LIB_FILE): $(LIB_DIR)
 	@$(MAKE) -sC $(LIB_DIR)
 
 $(NAME): $(OBJ_FILES)
-	@$(CC) $(CFLAGS) $(OBJ_FILES) -L $(LIB_DIR) -lmx -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) -L$(LIB_DIR) -lmx -o $@
 
 $(OBJ_FILES): | $(OBJ_DIR)
 
