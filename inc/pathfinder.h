@@ -56,6 +56,8 @@ void mx_validate_lines(t_validation *v);
 void mx_validate_islands(t_validation *v);
 void mx_validate_bridges(t_validation *v);
 
+void mx_line_error(int line_num);
+
 void mx_build_matrix(t_validation *v, t_matrix *m);
 void mx_run_fw_algorithm(int amt, t_matrix *m);
 void mx_reconstruct_path(t_validation *v, t_matrix *m);

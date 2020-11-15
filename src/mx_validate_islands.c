@@ -16,7 +16,7 @@ static void prepare_validation(t_validation *v) {
     }
 }
 
-static void check_islands_uniqueness(t_validation *v) {
+static void pick_unique_islands(t_validation *v) {
     bool is_unique = 1;
 
     for (int a = 0; v->buf_b[a]; a++) {
@@ -47,7 +47,11 @@ void mx_validate_islands(t_validation *v) {
         v->distances[v->i - 1] = mx_strdup(v->buf_a[1]);
         v->total_dist += mx_atoi(v->buf_a[1]);
 
-        check_islands_uniqueness(v);
+        if (mx_strcmp(v->buf_b[0], v->buf_b[1]) == 0) {
+            mx_line_error(v->i);
+        }
+
+        pick_unique_islands(v);
 
         mx_del_strarr(&v->buf_a);
         mx_del_strarr(&v->buf_b);
